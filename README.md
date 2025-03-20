@@ -580,8 +580,8 @@ declare type SearchParamProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-declare type Gender = "Male" | "Female" | "Other";
-declare type Status = "pending" | "scheduled" | "cancelled";
+declare type Gender = "male" | "female" | "other";
+declare type Status = "pending" | "schedule" | "cancelled";
 
 declare interface CreateUserParams {
   name: string;
@@ -789,7 +789,7 @@ export const PatientFormValidation = z.object({
     .string()
     .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
   birthDate: z.coerce.date(),
-  gender: z.enum(["Male", "Female", "Other"]),
+  gender: z.enum(["male", "female", "other"]),
   address: z
     .string()
     .min(5, "Address must be at least 5 characters")
@@ -892,7 +892,7 @@ export function getAppointmentSchema(type: string) {
 <summary><code>constants/index.ts</code></summary>
 
 ```typescript
-export const GenderOptions = ["Male", "Female", "Other"];
+export const GenderOptions = ["male", "female", "other"];
 
 export const PatientFormDefaultValues = {
   firstName: "",
@@ -900,7 +900,7 @@ export const PatientFormDefaultValues = {
   email: "",
   phone: "",
   birthDate: new Date(Date.now()),
-  gender: "Male" as Gender,
+  gender: "male" as Gender,
   address: "",
   occupation: "",
   emergencyContactName: "",
@@ -974,7 +974,7 @@ export const Doctors = [
 ];
 
 export const StatusIcon = {
-  scheduled: "/assets/icons/check.svg",
+  schedule: "/assets/icons/check.svg",
   pending: "/assets/icons/pending.svg",
   cancelled: "/assets/icons/cancelled.svg",
 };
